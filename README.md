@@ -7,7 +7,6 @@
 To set up a dev environment:
 
 ```
-cp config/server-config-SAMPLE.js config/server-config.js
 export THUMBPRINTS_ENV=dev
 ```
 
