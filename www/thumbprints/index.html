@@ -1,0 +1,163 @@
+
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<title>ReadSocial</title>
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<link type="text/css" rel="stylesheet" href="css/thumbprints.css" />
+</head>
+
+<body>
+
+<div>
+
+  <div>
+
+      <div id="contentdoc">
+        
+
+        <h1 class="hash">/partner-apps#vbush-aaron</h1>
+
+        <div class="ldquo">&ldquo;</div>
+
+        <div>
+
+
+          <p class="thumbprintable context">One can now <span>picture a future investigator in his laboratory</span>. His hands are free, and he is not <a href="#">anchored</a>. As he moves about and observes, he photographs and <b>comments</b>. <em>Time is automatically <span>recorded</span> to tie the two records together.</em> If he goes into the field, <span>he may be <b>connected</b> by radio to his recorder</span>. As he ponders over his notes in the evening, he again talks his comments into the record. His typed record, as well as his photographs, may both be in miniature, so that he projects them for examination.</p>
+
+          <p class="thumbprintable context">Second paragraph.</p>
+
+          <p class="thumbprintable context">Third paragraph.</p>
+
+        </div>
+
+  </div>
+
+</div>
+  
+ 
+<div id="comments-ui">
+
+</div>
+
+
+<script type="text/javascript" src="js/thumbprints.js"></script>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+
+      $('p.thumbprintable').thumbprints({
+
+        base: 'http://dev.readsocial.net', /* The base URL for getting scripts */
+        api_base: 'http://dev.readsocial.net', /* The base URL for making API calls */
+        session_base: 'http://dev.readsocial.net', /* The base URL for getting/setting sessions */
+        partner_id:8, /* Partner account id on ReadSocial (8 is the shared account) */
+        group_id:'vbush-aaron', /* Default starting hashgroup name */ 
+        app_id:'partner-apps', /* Your app's name identifier (within your account) */
+        ui: '#comments-ui', /* The ui attach point for commenting features */
+        par_hash:null, /* Starting par_hash or thumbprint. Will disable selection mechanism if set here (single paragraph mode) */
+        load_handler: function () { /* callback after API initialization */
+          console.log('ReadSocial Thumbprints plugin loaded!');
+        },
+        session: { /* active session object */
+          authed:false,
+          user: {
+            uimg: null,
+            uid: null,
+            uname: null,
+            ulink: null
+          }
+        },
+        hashgroups: [ /* starting list of hashgroup choices in channel bar */
+            {
+              name: "partner-testing-channel"
+            },
+            {
+              name: "travis"
+            },
+            {
+              name: "aaron"
+            },
+            {
+              name: "memex"
+            }
+      
+            ],
+         templates: my_template_overrides /* what it sounds like, see below */
+      });
+    });
+
+
+    // custom template options:
+
+    var my_template_overrides = {
+
+                    launcherHTML:'<a target="rs-ui" class="launcher readsocial-buttonbox launcherButtonBox launcherButton" style=""></a>'
+                    ,channelBar:'<div class="navigationItem readsocial-channelBar"><a class="queue">Overlays</a></div>'
+                    ,hashList: '<div id="readsocial_hashlist" class="dropSelector titleItem titleSelector" style=""><ul></ul></div>'
+                    ,hashItem: '<li val="queue" class="selected"><a data-name="{{ data }}">{{ name }}</a></li>'
+                    ,dialog: '<iframe id="rs-publisher" />'
+/*
+                    ,dialog: '  <div class="wrap">\
+                                    <div class="channelbar">\
+                                      <div class="groupname"></div><div class="authstatus"></div>\
+                                    </div>\
+                                    <div class="views">\
+                                      <div class="listbutton ib button">LIST</div>\
+                                      <div class="postbutton ib button">POST</div>\
+                                      <div class="authbutton ib button">AUTH</div>\
+                                      <div class="listview readsocial-posts view"><ul></ul></div>\
+                                      <div class="postview view">\
+                                        <div class="avatar"></div>\
+                                        <div class="readsocial-textentryarea postfield">\
+                                          <textarea preview="[leave your mark here]" class="readsocial-magnifier readsocial-note" name="note" rows="3" cols="70"></textarea>\
+                                        </div>\
+                                        <div class="readsocial-buttonContainer">\
+                                          <button class="readsocial-attachButton readsocial-button">ATTACH</button>\
+                                        </div>\
+                                      </div>\
+                                      <div class="authview readsocial-auth view">\
+                                          <div class="loginPane">\
+                                            <a class="readsocial-twitter-auth" href="javascript:void(0)" onclick="popWindow('+"'/v1/{{partner_id}}/auth/login/twitter'"+');return false">twitter</a>\
+                                            <a class="readsocial-facebook-auth"  href="javascript:void(0)" onclick="popWindow('+"'/v1/{{partner_id}}/auth/login/facebook'"+');return false">facebook</a>\
+                                            <a class="readsocial-google-auth" href="javascript:void(0)" onclick="popWindow('+"'/v1/{{partner_id}}/auth/login/google'"+');return false">google</a></div>\
+                                      </div>\
+                                    </div>\
+                                </div>'
+                    /*
+
+                    // other things you can customize
+                    // see the code for the default value
+                    // to each of these:
+
+    
+                    notification:
+                    login:
+                    join:
+                    noteListItem:
+                    noteImageListItem:
+                    noteLinkListItem:
+                    noteListNoItems:
+                    noteDetail:
+                    replyForm:
+                    responseListItem:
+                    linkDetail:
+                    imgDetail:
+                    noteListNoItemsImg:
+                    throbber:
+                    throbberSmall:
+                    domainIcons:
+                    sprites:
+                    */
+
+                  };
+
+
+</script>
+
+
+
+</body>
+</html>

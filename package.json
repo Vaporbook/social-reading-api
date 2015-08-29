@@ -1,0 +1,39 @@
+{
+  "name": "thumbprints",
+  "version": "1.0.2",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "description": "A group-based paragraph-level commenting system.",
+  "keywords": [
+    "annotation",
+    "social reading"
+  ],
+  "homepage": "http://www.readsocialapi.com",
+  "bugs": {
+    "url": "http://www.readsocial.net/contact",
+    "email": "aaron@readsocialapi.com"
+  },
+  "author": {
+    "name": "Aaron Miller",
+    "email": "aaron@readsocialapi.com",
+    "web": "http://twitter.com/vaporbook"
+  },
+  "dependencies": {
+    "connect-form": ">=0.2.1",
+    "ejs": ">=0.8.3",
+    "everyauth": ">=0.4.3",
+    "express": "3.0.0rc5",
+    "express-session": "^1.11.3",
+    "formidable": ">=1.0.6",
+    "knox": ">=0.0.9",
+    "mime-magic": ">=0.2.1",
+    "mongodb": ">=1.1.11",
+    "mongoose": ">=3.3.1",
+    "optimist": ">=0.3.5"
+  },
+  "devDependencies": {
+    "vows": "0.5.x",
+    "api-easy": "0.3.2"
+  }
+}

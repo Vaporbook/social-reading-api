@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);
+
+
+/*
+window.webkitStorageInfo.queryUsageAndQuota(webkitStorageInfo.TEMPORARY, //the type can be either TEMPORARY or PERSISTENT
+function(used, remaining) {
+
+    //var used = Math.round(used/1000/1000) + 'Mb';
+    //var remaining = Math.round(remaining/1000/1000) + 'Mb';
+    console.log("Used quota: " + used + ", remaining quota: " + remaining);
+    window.requestFileSystem(TEMPORARY, grantedBytes, onInitFs, errorHandler);
+}, function(e) {
+  console.log('Error', e); 
+} );
+
+*/
+
+
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;   
+window.directoryEntry = window.directoryEntry || window.webkitDirectoryEntry;
+var fs; // root DomFileSystem
+var dirReader; // DirectoryReader
+var entries = []; // simple array
+var displayEl = null;
+var config = {
+    fileListSelector: '#filelist',
+    fileInputSelector: '#files',
+    storageAllotment: 1024*1024,
+    storageType: PERSISTENT
+}
+// 1.
+
+function loadHandler() {
+
+    displayEl = document.querySelector(config.fileListSelector);
+    document.querySelector(config.fileInputSelector).addEventListener('change', handleFileSelect, false);
+    window.webkitStorageInfo.requestQuota(config.storageType, config.storageAllotment, function(grantedBytes) {
+      window.webkitRequestFileSystem(config.storageType, grantedBytes, onInitFs, errorHandler); // pass the buck to initFs
+    }, function(e) {
+      console.log('Error', e); 
+    });
+
+}
+
+
+// 2.
+
+function onInitFs(myfs) {
+    console.log('FS init');
+    fs = myfs;
+    console.log(myfs);
+    dirReader = fs.root.createReader();
+    console.log(dirReader);
+    console.log('reading entries...');
+    reloadEntries();
+}
+
+
+// 3. 
+
+function reloadEntries() {
+    entries = [];
+    readEntries();
+}
+
+function getEntries() {
+    return entries;
+}
+
+// 4.
+
+function readEntries() {
+     if(typeof dirReader==='undefined') throw "Must create dirReader on localCatalog first.";
+     console.log('calling read entries on dir reader');
+     dirReader.readEntries (function(results) {
+      
+      // EntryArray results
+  
+      if (!results.length) {
+        // show the list
+        listResults(entries.sort());  
+      } else {  
+        entries = entries.concat(toArray(results));
+        // TODO add hash lookup here
+        readEntries();  
+      }  
+    }, errorHandler);  
+}
+
+
+// User interactions:
+// A. Add
+
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+        
+        console.log(f);
+
+        var reader = new FileReader();
+
+        // Closure to capture the file information.
+        reader.onload = (function(f) {
+
+            return function fileProcess (fdata) {
+
+                console.log('processing file...');
+                console.log(fdata);
+                if(typeof fs === 'undefined') throw "FileSystem fs is not defined";
+
+                // getFile creates the file if non-existent
+
+                fs.root.getFile(f.name, {create: true}, function(fileEntry) {
+                    
+                    console.log(fileEntry); // FileEntry
+
+                    fileEntry.createWriter(function(fileWriter) {  
+                        
+                        console.log('fileWriter created');
+                        console.log(fileWriter);
+
+                        fileWriter.onwriteend = function(e) {  
+                            console.log('Write completed.');  
+                        };  
+
+                        fileWriter.onerror = function(e) {  
+                            console.log('Write failed: ' + e.toString());  
+                        };  
+
+                          // Create a new Blob and write it to log.txt. 
+                        if(typeof BlobBuilder ==='undefined') {
+                           window.BlobBuilder = WebKitBlobBuilder;
+                        }
+                        var bb = new BlobBuilder(); 
+                         // Note: window.WebKitBlobBuilder.  
+                        
+                        bb.append(fdata);
+
+                        fileWriter.write(bb.getBlob('application/epub+zip'));  
+
+                    }, errorHandler);
+                }, errorHandler);
+
+            }
+            
+
+        })(f);
+
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+
+    }
+}
+
+// B. Remove
+
+function remove(f) {
+    refresh();
+}
+
+// C. Open
+
+function load(f) {
+    //fileList[f];
+    refresh();
+}
+
+// D. Refresh
+
+function refresh() {
+    reloadEntries();
+}
+
+// Data
+
+function toArray(list) {  
+  return Array.prototype.slice.call(list || [], 0);  
+}  
+
+
+function errorHandler(e) {
+  console.log("FS error", e);
+}
+
+
+
+
+// UI
+
+
+function listResults(entries) {  
+  // To improve performance, we create document fragments,   
+  // which are appended to the DOM only once.   
+  // So only one browser reflow occurs.  
+  var fragment = document.createDocumentFragment();  
+  
+  console.log(fragment);
+  if(!fragment) throw (fragment);
+
+
+  entries.forEach(function(entry, i) {  
+    var img = entry.isDirectory ? 'D' :  
+                                  '-';  
+    var remove = '<a href="javascript:void(0)" onclick="remove('+"'"+entry.name+"'"+')">remove</a>';
+                       
+    var li = document.createElement('li');  
+    li.innerHTML = [img, '', '<a href="javascript:void(0)" onclick="load('+"'"+entry.name+"'"+')">', entry.name, '</a>&nbsp;|&nbsp;', remove].join('');  
+    fragment.appendChild(li);  
+  });  
+  
+  displayEl.appendChild(fragment);  
+}
+
+
+
+</script>
+                        
+</head>
+<body onload="loadHandler()">
+
+
+<div>
+<h1>Add to your reading list</h1>
+<input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+<script>
+
+
+
+
+</script>
+</div>
+
+<div>
+    <ul id="filelist">
+    </ul>
+</div>
+
+
+</body>
+</html>

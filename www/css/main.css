@@ -1,0 +1,52 @@
+
+body {
+	font-size:22px;
+	margin:0 auto;
+	width:900px;
+}
+body .contentdoc {
+	margin:3em;
+}
+p {
+	
+}
+blockquote {
+	background-color:#eee;
+	padding:2em;
+}
+textarea#json-results {
+	
+	width:100%;
+	height:300px;
+	text-align:center;
+	font-size:.9em;
+	font-family:monospace;
+	
+}
+
+code {
+
+
+}
+
+h1,h2,h3,h4 {
+	border: none;
+	background: #0D5995;
+	color: white;
+	padding: 6px 20px;
+	margin: 1em 0 0 0;
+	font-family:sans-serif;
+}
+
+code pre {
+	font-size:.9em;
+	padding: 2em;
+	overflow-x: auto;
+	background-color: #FBF9EA;
+	border: 1px solid #E2E1D5;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin: 0px;
+}
+

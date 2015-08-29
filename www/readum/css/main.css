@@ -1,0 +1,668 @@
+/*	Less Framework 3
+	by Joni Korpi
+	http://lessframework.com	*/
+
+
+/*	Resets
+	------	*/
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, 
+p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, 
+img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, 
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figure, figcaption, hgroup, 
+menu, footer, header, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+article, aside, canvas, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, audio, video {
+	display: block;
+}
+
+a img {border: 0;}
+
+figure {position: relative;}
+figure img {width: 100%;}
+
+
+/*	Typography presets
+	------------------	*/
+
+.gigantic {
+	font-size: 110px;
+	line-height: 120px;
+	letter-spacing: -2px;
+}
+
+.huge, h1 {
+	font-size: 68px;
+	line-height: 72px;
+	letter-spacing: -1px;
+}
+
+.large, h2 {
+	font-size: 42px;
+	line-height: 48px;
+}
+
+.big, h3 {
+	font-size: 26px;
+	line-height: 36px;
+}
+
+.normal, body {
+	font: 16px/24px Helvetica, Arial, sans-serif;
+}
+
+.small {
+	font-size: 13px;
+	line-height: 18px;
+} 
+
+
+/*	Default 9-column layout
+	60 px columns, 24 px gutters, 60 px margins, 768 px total
+	---------------------------------------------------------
+	1     2      3      4      5      6      7      8      9
+	60px  144px  228px  312px  396px  480px  564px  648px	 732px*/
+
+body {
+	/*background: rgb(232,232,232);*/
+	background: rgb(255,255,255);
+	padding: 0px 0px 0px 0px;
+	width: 730px;
+	-webkit-tap-highlight-color: rgb(255,255,0);
+	text-align:center;
+	margin:0 auto;
+}
+
+::selection 	 	{background: rgb(255,255,0);}
+::-moz-selection 	{background: rgb(255,255,0);}
+img::selection 		{background: transparent;}
+img::-moz-selection {background: transparent;}
+
+#home {
+	height: 600px;
+	background: rgb(255,255,255);
+}
+
+
+/*	13-column layout
+	60 px columns, 24 px gutters, 72 px margins, 1212 px total (extra space for scrollbars)
+	---------------------------------------------------------------------------------------
+	1     2      3      4      5      6      7      8      9      10     11     12     13
+	60px  144px  228px  312px  396px  480px  564px  648px  732px  816px  900px  984px  1068px	*/
+
+@media only screen and (min-width: 1212px) {
+	
+	body {
+		padding: 96px 72px 0;
+		width: 1068px;
+	}
+	
+}
+
+
+/*	9-column layout
+	60 px columns, 24 px gutters, 72 px margins, 1212 px total (extra space for scrollbars)
+	---------------------------------------------------------------------------------------
+	1     2      3      4      5      6      7      8      9     
+	60px  144px  228px  312px  396px  480px  564px  648px  732px  	*/
+
+
+@media only screen and (max-width: 750px) and (min-width: 568px) {
+	
+	body {
+		padding: 30px 14px 0;
+		width: 732px;
+		/* Prevents Mobile Safari from bumping up font sizes in landscape */
+		-webkit-text-size-adjust: 100%;
+	}
+	
+}
+
+
+/*	5-column layout
+	60 px columns, 24 px gutters, 42 px margins, 480 px total
+	---------------------------------------------------------
+	1     2      3      4      5
+	60px  144px  228px  312px  396px	*/
+
+@media only screen and (max-width: 567px) and (min-width: 480px) {
+	
+	body {
+		padding: 60px 42px 0;
+		width: 396px;
+		/* Prevents Mobile Safari from bumping up font sizes in landscape */
+		-webkit-text-size-adjust: 100%;
+	}
+	
+}
+
+
+/*	3-column layout
+	60 px columns, 24 px gutters, 46 px margins, 320 px total
+	---------------------------------------------------------
+	1     2      3
+	60px  144px  228px	*/
+
+@media only screen and (max-width: 479px) {
+	
+	body {
+		padding: 48px 46px 0;
+		width: 228px;
+		/* Prevents Mobile Safari from bumping up font sizes in landscape */
+		-webkit-text-size-adjust: 100%;
+	}
+	
+}
+
+
+/*
+RS styles
+*/
+
+header,nav {
+	clear:both;
+}
+
+body {
+	color:#333;
+}
+
+a {
+	color: #3B5998;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+div.wrapper {
+	margin:0 auto;
+}
+div.cblock {
+	margin:26px 38px 30px 38px;
+	clear:both;
+	color: #333333;
+  direction: ltr;
+  font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+  text-align: left;
+	word-wrap: break-word;
+}
+div.cblock.faq div {
+	margin-top:2em;
+}
+
+.installed-ff, .installed-chrome {
+	min-height:90px;
+}
+div.content {
+	text-align:left;
+	background-color:white;
+}
+div.headerbar {
+	clear:both;
+	min-width:360px;
+	height:83px;
+	background-color:#ddd;
+}
+div.headerbar div.logo {
+	float:left;
+	margin-top:13px;
+	margin-left:38px;
+}
+
+div.headerbar div.likeit {
+	width:150px;
+	float:left;
+	margin-left:23px;
+}
+
+div.headerbar div.logophrase {
+	left:5px;
+	margin-left:5px;
+	position:relative;
+	top:48px;
+	width:600px;
+}
+span.header-italic {
+	font-style:italic;
+	color:#666;
+}
+hgroup.home {
+	width:100%;
+	background: rgb(232,232,232);
+	padding:8px 0 8px 0;
+}
+h2 {
+	color:#900;
+	font-size:1.2em;
+	font-weight:bold;
+	line-height:1.1em;
+	margin-left:38px;
+}
+h3 {
+	color:#444;
+	font-weight:normal;
+	font-size:1.1em;
+	line-height:1.2em;
+	margin-left:40px;
+}
+.headingbox {
+	background-color:rgb(232,232,232);
+	width:100%;
+	padding:.55em 0 .2em 0;
+	clear:both;
+}
+h4 {
+	color:#900;
+	font-weight:bold;
+	font-size:1em;
+	line-height:1.2em;
+	margin-left:40px;
+	margin-top:.1em;
+	margin-bottom:.2em;
+}
+div.promostrip {
+	clear:both;
+	height:140px;
+}
+div.promostrip div.readum-installer img {
+	margin-top:1em;
+	margin-bottom:4px;
+}
+div.promostrip div.readum-installer {
+	float:left;
+	width:52%;/*
+	min-width:250px;
+	max-width:430px;
+	*/
+	margin: 0 5px 0 5px;
+	text-align:center;
+}
+div.readum-installer p {
+	text-align:left;
+	font-size:.8em;
+	line-height:1.1em;
+	margin:0;
+}
+div.promostrip div.readum-screenshot {
+	float:left;
+	width:48%;
+	/*
+	min-width:224px;
+	max-width:274px;
+	*/
+	text-align:center;
+	max-width:224px;
+	min-width:204px;
+}
+div.promostrip div.readum-screenshot p {
+	font-size:.8em;
+	line-height:1em;
+}
+div.templatebox {
+	margin:0;padding:0;padding-bottom:20px; clear:both;
+}
+div.templatebox, div.cblock {
+	min-width:396px;
+}
+ol.howto-steps {
+	margin-left:38px;
+	font-size:1.4em;
+	font-weight:bold;
+	line-height:1.4em;
+	color:blue;
+	min-width:250px;
+	max-width:550px;
+}
+
+li.num-step {
+	margin-bottom:1em;
+}
+
+li.num-step div.howto-step-content {
+	font-size:.7em;
+	font-weight:normal;
+}
+li.num-step div.howto-step-content p {
+	font-size:.9em;
+	line-height:1em;
+	color:#333;
+}
+
+p {
+	font-size:.9em;
+	line-height:1.1em;
+	margin:4px 0 14px 0;
+}
+
+div.footerbar {
+	text-align:center;
+	background-color:#eee;
+	font-size:10px;
+	color:#666;
+}
+
+.fl {
+	float:left;
+}
+.center {
+	text-align:center !important;
+	margin:0 auto;
+}
+#paragraphAvatar img {
+	margin-right:10px;
+	height:50px;
+	width:50px;
+}
+#paragraphName {
+
+}
+#paragraphName .booktitle {
+	font-size:1.2em;
+	font-weight:bold;
+	letter-spacing:-.03em;	
+	  line-height: 1.2em;
+}
+#paragraphDesc {
+	margin-left:56px;
+	margin-right:36px;
+	font-family:"georgia, garamond, palatino, serif";
+	font-size:1.3em;
+}
+#bookCover {
+	margin-right:13px;
+}
+#bookCover img {
+	border:1px solid #333 !important;
+}
+.avatarBlock {
+	margin-left:10px;
+	 margin-bottom: 2em;
+}
+
+.bookBlock {
+	margin-left:70px;
+	font-size:1.3em;
+	clear:both;
+}
+.asterisk {
+	color:#900;
+}
+.excerptBlock {
+		clear:both;
+    display:block;
+}
+
+.fb_block {
+	clear:both;
+}
+.fb_comment_stream {
+	clear:both;
+}
+.excerptBlock .lq {
+	clear:both;
+}
+.excerptBlock .rq {
+	clear:both;
+	text-align:right;
+}
+.indent56 {
+  font-size: 0.8em;
+  margin-left: 56px;
+  width: 556px;
+}
+.booklist {
+ 		height: 60px;
+    text-align: center;
+}
+.booklistinner {
+    background-color: #EEEEFF;
+    height: 60px;
+		width:400px;
+    margin: auto;
+    position: absolute;
+    right: 40px;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+}
+.booklistinner p {
+
+	margin:1em;
+	line-height:1.1em;
+	
+}
+.booklistinner p img {
+
+	margin:2px;
+		
+}
+.booklist .bookcover {
+	margin:10px;
+	margin-top:3px;
+	margin-bottom:3px;	
+}
+.cb {
+	clear:both;
+}
+
+.formsuccess, .formerror {
+
+	font-size:1.2em;
+	font-weight:bold;
+	background-color:#eee;
+
+}
+
+.formsuccess {
+ 		color: green;
+    margin: 20px;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.formsuccess p, .formerror p {
+	margin:0 !important;
+	padding:0;
+}
+
+.formerror {
+	color: red;
+  margin: 20px;
+  padding: 8px 0;
+  text-align: center;
+	
+}
+.formrow {
+	width:100%;
+	clear:both;
+	margin-top:20px;
+}
+.labelwrap {
+ 	  margin: 10px auto;
+		margin-bottom:5px;
+    padding: 2px;
+		width:70%;
+}
+label.contactlabel {
+	display:block;
+	text-align:left;
+	font-size:1.4em;
+	color:#666;
+}
+hr.formhr {
+ border: 1px solid #DDDDDD;
+    margin: 30px auto;
+    width: 90%;
+}
+.fieldwrap {
+ margin: 0 auto;
+    padding: 2px;
+    text-align: center;
+}
+.fieldwrap textarea {
+	height:200px;
+	margin:0px auto;
+}
+.fieldwrap textarea, .fieldwrap input {
+	width:70%;
+	font-size:1.2em;
+	border:1px solid #666;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+.fieldwrap input {
+	height:1.4em;
+}
+.formsubmit {
+  -moz-border-radius: 6px 6px 6px 6px;
+  margin: 20px auto;
+  text-align: center;
+}
+.formsubmit input {
+	font-size:1.4em;
+	border:1px solid #666;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+}
+.isbn-small {
+	font-size:.8em;
+	color:#999;
+}
+
+.postActionBox {
+	clear:both;
+	text-align:right;
+}
+.postAction {
+	float:right;
+	margin:1em;
+}
+.postAction a {
+	font-size:1em;
+}
+.postCommentBox {
+	clear:both;
+}
+.postCommentAvatar {
+	float:left;
+}
+.postCommentAvatar a {
+	
+}
+.postCommentAvatar img {
+	margin-right:10px;
+	width:32px;
+	height:32px;
+}
+.postCommentName {
+	width:100%;
+}
+.postCommentName a {
+	
+}
+.paragraphComment {
+	/*
+	background-color:#E9E5DD;
+	*/
+	background-color: #E9E5DD;
+  border-bottom: 1px solid #DDDDDD;
+  line-height: 1.4em;
+  margin-bottom: 14px;
+  margin-left: 66px;
+  padding: 10px 14px;
+}
+.postCommentMessage {/* #E2E7EE */ /*#e9e5dd*/
+	margin-left:46px;
+  padding: 10px 14px;
+	margin-bottom:14px;
+	background-color:#E9E5DD;
+	line-height: 1.4em;
+	border-bottom:1px solid #ddd;
+}
+.smallgray {
+	color:#666;	
+}
+.smallgray {
+	font-size:11px;
+	line-height:10px !important;
+}
+p.smallgray {
+}
+.paragraphPopover {
+	position:absolute;
+	border:1px solid #333;
+	padding:2em;
+	margin:0;
+	background-color:white;
+}
+.smallgray a {
+	color:#666;
+	font-weight:normal !important;
+}
+.smallgray a:hover {
+	text-decoration:underline;
+	color:#666;
+	font-weight:normal !important;
+}
+.postActionBox {
+	
+}
+.postAction {}
+.rs_comment_form {
+	clear:both;
+	margin:0 auto;
+	background-color:#E9E5DD;
+	text-align:left;	
+}
+.rs_textarea_box {
+  padding-left: 26px;
+  padding-top: 10px;
+  text-align: left;
+}
+.rs_formbutts {
+	text-align:right;
+   padding: 8px 20px;
+}
+.rs_comment {
+	width:94%;
+	height:3em;
+	padding:3px;
+	margin-top:6px;
+	margin-bottom:6px;
+	border:1px solid #333;
+	font: inherit;
+	line-height:1em;
+}
+.rs_submit_box, .rs_hidelink {
+	display:inline;
+}
+a.rs_comment_submit:hover {
+	text-decoration:underline;
+}
+a.rs_comment_submit {
+ padding: 4px 8px;
+	border:1px solid #333;
+	background-color:#eef;
+	text-decoration:none;
+}
+.rs_hidelink {
+	
+}
+.rs_hidelink a {
+	
+}
+.rs_hidelink a:hover {
+	text-decoration:underline;
+}
+
+.commentHolder {
+	margin:1em;
+}
+.author {
+	font-size:13px;
+}

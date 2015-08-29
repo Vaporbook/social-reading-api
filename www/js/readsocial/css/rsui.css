@@ -1,0 +1,461 @@
+body {
+  background:none transparent !important;
+}
+.modal-body {
+  padding:10px 0;
+}
+
+.bigzero {
+display:block;
+color:#78adce;
+font-size:90px;
+line-height:90px;
+}
+.bigzero-sub {
+color:#78adce;
+font-size:28px;
+display:block;
+}
+.bigzero-sub2 {
+color:#333;
+font-size:10px;
+display:block;
+font-weight:bold;
+}
+.readsocial-groupEdit {
+  width:168px;
+  position:absolute;
+}
+.readsocial-groupEdit input[type=text] {
+ width:160px;
+
+}
+
+li .readsocial-note-item {
+  overflow: hidden;
+  cursor: pointer;
+  padding: 10px 10px 9px 14px;
+  text-align:left;
+  display: inline-block;
+vertical-align: middle;
+width: 90%;
+/*
+  border: 1px solid #EEE;
+  background-color: #EDEDED;
+*/
+
+}
+#logo {
+  position:absolute;
+  top:6px;
+  left:5px;
+  height: 20px;
+  width:121px;
+  z-index:1041;
+  cursor:pointer;
+  background: transparent url(/images/readsocial-logo-white-20px.png) top left no-repeat !important;
+}
+
+#helptext {
+width:100%; margin:0 auto; position:absolute; opacity:1; left:0; bottom:90%; z-index:1041;
+}
+#helptext .center {
+  text-align:center; margin:0 auto; width:70%; color:white; 
+line-height: 28px; font-size: 28px; 
+color: #aaa;
+}
+#helptext2 {
+width:100%; margin:0 auto; position:absolute; bottom:20px; opacity:1; left:0; z-index:1041;
+}
+#helptext2 .center {
+  text-align:center; margin:0 auto; width:70%; color:white; 
+line-height: 18px; font-size: 18px; 
+color: #aaa;
+}
+
+.shadow {
+  text-shadow:0 .1em 0 rgba(0, 0, 0, .6);
+}
+
+.readsocial-background-nocomments {
+  height:104px;
+  bottom:0;
+  position:absolute;
+}
+.readsocial-loadmore {
+  margin:0 auto;
+  text-align:center;
+}
+
+/*li.textnote div.readsocial-note-item */.readsocial-note-body {
+  display: inline-block;
+  width: 390px;
+  margin: 2px 10px 2px 8px;
+  vertical-align: top;
+  height: auto;
+  overflow:hidden;
+  overflow-type:ellipsis;
+}
+.captioned {
+border: 1px solid #999;
+background-color: white;
+text-align: center;
+padding: 4px 2px;
+max-height:236px;
+}
+.caption {
+  text-align:center;
+  margin:0 auto;
+}
+.readsocial-username {
+text-align: right;
+margin-left: 50px;
+font-size: 11px;
+display: inline-block;
+}
+
+.readsocial-filedropzone {
+  border:3px dashed gray;
+  text-align:center;
+  font-weight:bold;
+  font-size:16px;
+  line-height:20px;
+  height:20px;
+  width:90%;
+  margin:0 auto;
+  padding:20px;
+  border-radius:20px;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;  
+}
+.readsocial-listimage {
+  display:inline-block;
+}
+/* list item image note */
+/*
+li.imagenote div.readsocial-note-item .readsocial-note-body {
+  display: inline-block;
+  width: auto;
+  margin: 2px 10px 2px 8px;
+  vertical-align: top;
+  height: 120px;
+  overflow:hidden;
+  overflow-type:ellipsis;
+}
+*/
+/*
+li.imagenote div.readsocial-note-item .readsocial-note-body img {
+  height:80px;
+  width:100px;
+}
+*/
+li.linknote div.readsocial-note-item .readsocial-note-body {
+  display: inline-block;
+  width: 350px;
+  margin: 2px 10px 2px 8px;
+  vertical-align: top;
+  height: 1.5em;
+  overflow:hidden;
+  overflow-type:ellipsis;
+}
+
+li.noteitem-even {
+  background-color:#fcfcfc !important;
+}
+li.noteitem-odd {
+  background-color:#ddd !important;  
+}
+
+.rs-selected-wrap {
+  cursor:text !important;
+  user-select:text !important;
+  -moz-user-select:text !important;
+  -khtml-user-select:text !important; 
+  -webkit-user-select:text !important;
+  -o-user-select:text !important;
+  height: 3em;
+overflow: auto;
+}
+
+.readsocial-responselist ul {
+  padding-left:0;
+  margin-left:0;
+}
+
+li .readsocial-response-item {
+  overflow: hidden;
+  padding: 5px 6px 2px 10px;
+  border: 1px solid #EEE;
+  background-color: #EcEcEc;
+}
+
+div.readsocial-profile-img {
+  height:35px;
+  width:35px;
+  display:inline-block;
+}
+div.readsocial-profile-img img {
+  height:35px;width:35px;
+}
+
+
+.listnav {
+  position:absolute;
+  right:10px;
+}
+
+mark {
+  background-color:#9e5;
+}
+.rs-channelList {
+  width:190px;
+  max-width:190px;
+  display:inline-block;
+  vertical-align:top;
+}
+.readsocial-posts {
+  overflow:auto;
+  height:340px;
+}
+.readsocial-group-name {
+  display:none;
+}
+.readsocial-agentstring {
+  display:none;
+}
+.readsocial-hilight-body {
+  display:none;
+}
+.readsocial-posts ul {
+  margin-left:0px;
+}
+.rs-selected-wrap {
+  border:none;
+  position:static;
+  font-size:14px;
+  line-height:16px;
+  font-style:italic;
+  margin-bottom:0;
+  font-weight:normal;
+  font-family: serif;
+}
+
+.readsocial-dialogheader {
+ /* position:absolute;
+  width:98%;
+  left:1%;
+  top:1%;*/
+  color: white !important; font-weight:bold !important; margin:0 auto !important; height:24px !important;
+}
+.authnav-ul {
+  /*margin-left:80px;*/
+  margin-bottom:22px; /*
+  width:190px;
+  max-width:190px; */
+}
+#readsocial-viewbox {
+  height:380px;
+}
+.readsocial-topnav {
+  margin-bottom:0;
+}
+.readsocial-dialogheader img {
+ display:inline-block;
+}
+.readsocial-dialogheader .img-wrap {
+  margin: 0 auto;
+  width: 93px;
+  padding: 2px 40%;
+  padding-bottom:6px;
+  background-color:#333;
+  border-radius:2px;
+    -webkit-border-radius:2px;
+      -moz-border-radius:2px;
+  background: -moz-linear-gradient(top, #666 0%, #444 100%); /* firefox */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666), color-stop(100%,#444)); /* webkit */
+  color: #ffffff; font-weight: bold;
+/* IE */
+filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#444444', EndColorStr='#999999');
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#444444', EndColorStr='#999999')";
+}
+
+.ib {
+  display:inline-block;
+  vertical-align:middle;
+}
+mark {
+  cursor:pointer;
+}
+
+/* box for note textarea (typing note container) */
+
+.readsocial-postcontrols .tab-content {
+  width: 344px;
+  display: inline-block;
+  overflow:hidden;
+}
+
+/* file drop target. to enable drag n drop remove this rule */
+.readsocial-filedropzone {
+  display:none;
+}
+/* textarea where actual note gets typed in */
+
+textarea.readsocial-note {
+  width:332px;
+  overflow:auto;
+}
+
+textarea.readsocial-response {
+  width:432px;
+  overflow:auto;
+}
+
+
+.readsocial-textentryarea {
+  margin-top:1em;
+}
+
+.readsocial-textentryarea textarea {
+ /* width: 433px; */
+  height: 4em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+
+/* outer container for every major view in UI */
+
+.rsview {
+  display:none;
+
+/*
+  position:absolute;
+  bottom:0;
+  height:auto;
+  */
+  overflow:auto;
+}
+.context-before, .context-after {
+ /*
+  display:none;
+  opacity:0;
+  height:1em;
+  */
+}
+.greenback {
+  background-color:#82ba89 !important;
+  font-weight:bold;
+  color:white;
+}
+.rssubview {
+  clear:both;
+}
+.rule {
+  border-top:1px solid #888;
+  margin-top:18px;
+}
+
+.readsocial-reply-button-div {
+margin: 10px;
+display: inline-block;
+vertical-align: top;
+}
+
+.readsocial-note-item-detail.texttype {
+  height: 132px;
+  overflow: auto;
+}
+.readsocial-responselist {
+  height:72px;
+  overflow:auto;
+}
+
+
+.readsocial-note-item-detail.imgtype .readsocial-note-detail-body {
+  display: inline-block;
+  margin: 0px 10px 7px 8px;
+  width: 364px;
+  overflow: auto;
+  height:auto;
+  max-height: 91px;
+  padding: 0 5px 2px 3px;
+}
+.readsocial-note-item-detail.imgtype .readsocial-note-detail-body img {
+  float:right;
+}
+.readsocial-note-item-detail.imgtype .readsocial-note-detail-body .bodytext {
+  margin-top:20px;
+  display:inline-block;
+}
+
+.readsocial-note-item-detail.imgtype .readsocial-note-detail-body img {
+  display: inline-block;
+  height:70px;
+  width:100px;
+}
+
+
+
+
+
+
+
+
+.readsocial-activeButton {
+  background-color:#82ba89 !important;
+}
+
+[class^="rs-icon-"], [class*=" rs-icon-"] {
+display: inline-block;
+width: 14px;
+height: 14px;
+line-height: 14px;
+vertical-align: text-top;
+background-image: url("images/rsicons.png");
+background-position: 14px 14px;
+background-repeat: no-repeat;
+}
+
+.readsocial-makeCommentNav {
+  /*
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAANCAYAAACZ3F9/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MkY2MDEzNTExMDcxMTFFMUE3NzU4QzAzNUJBQkE0NDMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MkY2MDEzNTIxMDcxMTFFMUE3NzU4QzAzNUJBQkE0NDMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyRjYwMTM0RjEwNzExMUUxQTc3NThDMDM1QkFCQTQ0MyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyRjYwMTM1MDEwNzExMUUxQTc3NThDMDM1QkFCQTQ0MyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpcRTnsAAADGSURBVHjaYnTKdWJiYGAIAuJ8INZlgID/DJgApO4uEM8B4rksQCIYiBcBMQcDYWAIxFOBmBtkSiGRmpBBFkijNgPpQIEJh38Igf9MUE+TChhBmt6TofETSONqMjTuA2nsA+J1QPyDCA1/gfgIENcx/v//n8E5zxkUHZ5ArAnEeUAsDlV4DYgXA/EfaFg8BeIdeyftfQvWiAyAhlyCpqDjQJwEVHQDa+ggawRq4gFSd4D4ElTTE1xuZsEithGIZ+DTBAIAAQYAcpIz/Q61KocAAAAASUVORK5CYII=)
+  */
+}
+
+.oauth-icon {
+  height:16px;
+  width:16px;
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.oauth-icon-facebook-com {
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAX0lEQVQ4jWP4//8/AyUYTFhHzjgDxP9JxGeQDSBVMxgTbUBCxer/r999+Q8DJBuArJksA9A10s8AXIBoA0B+R/Y/jD+EwoBoA1yT5v3PbdmCE8MAshhID/UMoDgzUYIBj0Cgi7ar4coAAAAASUVORK5CYII=)
+}
+
+.oauth-icon-google-com {
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAADCklEQVQ4jSXSy2ucVRjA4d97zvdNJpPJbTJJE9rYaCINShZtRCFIA1bbLryBUlyoLQjqVl12W7UbN4qb1gtuYhFRRBCDBITaesFbbI3RFBLSptEY05l0ZjLfnMvrov/Bs3gAcF71x6VVHTk+o8nDH+hrH89rUK9Z9Yaen57S3wVtGaMBNGC0IegWKIDxTtVaOHVugZVmH3HX3Zz+4l+W1xvkOjuZfPsspY4CNkZELEgEIJKwYlBjEwjec/mfCMVuorVs76R8+P0KYMmP30U2dT8eIZqAR2ipRcWjEYxGSCRhV08e04oYMoxYLi97EI9YCJ0FHBYbIVGDlUBLwRlLIuYW6chEmQt/rJO09RJjhjEJEYvJYGNhkbUhw43OXtIWDFRq9G87nAaSK6sVRm8r8fzRMWbOX2Xx7ypd7ZET03sQhDOz73DqSJOrd+7HSo4QIu0Nx/4rOzx+cRXZ9+z7+uqJ+3hiepxK3fHZT2tMjXYzOtzL6dmznPzhLexgN0QlxAAYxAlqUqRmkf5j59RlNQ6MFHhgcpCTTx8EUb5e+plD7x4jjg1ANCAgrRQAdR7xKXjBlGyLYi7PxaUmb8z8xcpGHVXLHaXdjI0egKyJiQYTEhSPREVIEUBNC+Mqm+xpz3j0njLPHB2nsh1QgeG+IS48dYbD5YNoo0ZUAbVEuTUoKuBSZOarX/WhyQn6eg2+usDWf0s0tq8zNPYk+WI/Lnge++hlvlyfQ3NdECzGRWKwEEA0qNY251n69kV6+Y0kbaCZoebG2X3oU7pKoyxuXOPe945zs9DCeosGIXoBDyaLdf6ce4Hbk+/Y299ksKtAuaeNsiyw8c1LKIZ95b0MdgxA5giixACpTxEPSau6QdFfI5/2cLPmEW+JAQrtJUJzDXF1dkwHzVodJMX4HFEcQQMaFdPeM0Jb/4PUtzzaLKAhRyJFwo6lbegRNFfk819muV5dR4JBQoQdQ2xFiDmSNDHiaptamR9Gq5cQ18AledrGDpOfeI5Lq8u88smbhMRisoSAgAYghdfn5H/JkHuRZ1owLAAAAABJRU5ErkJggg==);
+}
+
+.oauth-icon-twitter-com {
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAByElEQVQ4jaWTT2sTURTFf8lM/k+ZGcPENpU4bRkXLsy4KBRBST5BAn6AOuJawS9QEFy4soLgQjCzciFKGxCtK6PWjaAmC1GwUEHQIMVMtEripIyLdsIkJgvJ2dx3efecy3n3vpDneUyC8ERsQPQPrY4rq/FIe7ig1XFlu/7ZcjquqiuJbcvM2a2OKwOo8Ug75Fso33tdLR3T1iwzZwcFzNub9cafRJ6wCG6Xgtyrbf/ozq2cMa5Y+SN3+hacqcMz5583K1a1XvE7vG22zUZSzzM9D5kczBrUQtmCkz2ePplVPw1YWDaUh89+pxbtnW/n1m/WSmVDq8pS8hdxbdBTSsZeSl41tdgrgL6F4oP3L2tMnwJgrwc/v+/HdPafh/POqhqwA4EpXC/O35BFdgEQRFAyI8mmImz55AEB81Ds0aWF6P2+yBhc1IW7wTy4B7sF1dvQ415zHNlUhC1rIXVrnADFWWmjsiitlGciL0aRn56WLgADDUTYX5bLT96trn/4WnJCMZVMDqbS/aLlo9HHqycS15RoeHNY2J+CABh1p7e09sUt+pd6MtwsaOKbuZTQAD4Ce+MEfEhAOpB3gdZBHIlhgf/GxL/xLxnPlf5bc5lvAAAAAElFTkSuQmCC);
+}
+.readsocial-bigzero {
+
+}
+
+.bigzero-holder {
+  text-align:center;
+  clear:both;
+  overflow:hidden;
+}
+
+
+
+.bghilite, .hilite {
+  background-color:#C6DAF5;
+}
+
+

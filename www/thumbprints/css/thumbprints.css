@@ -1,0 +1,196 @@
+
+
+/*
+
+  ReadSocial Thumbprints Plugin
+
+  Default CSS template
+
+  You can use as is or replace some or all of this with your own rules.
+  To add or modify HTML templates, see the example in index.html
+
+*/
+
+
+body {
+	margin: 0 auto;
+  padding-bottom:10em;
+}
+
+p, p * {
+  cursor:pointer;
+  user-select:none;
+  -moz-user-select: none; 
+  -khtml-user-select: none; 
+  -webkit-user-select: none; 
+  -o-user-select: none;
+}
+
+.rs-selected-wrap p {
+  cursor:text !important;
+  user-select:text !important;
+  -moz-user-select:text !important;
+  -khtml-user-select:text !important; 
+  -webkit-user-select:text !important;
+  -o-user-select:text !important;
+}
+.rs-selected-wrap {
+  border:none;
+  padding:0;margin:0;
+  position:static;
+  background-color:#eee;
+}
+.highlightoverlay {
+  position:absolute;
+  background-color:#b80;
+  opacity:.3;
+}
+.launcher {
+  width: 109px;
+  height: 46px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAAAuCAYAAAAiNJeUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTVBRUUyRkMzODBDMTFFMTgxMThEM0FDRTM3RDQ1OTAiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTVBRUUyRkQzODBDMTFFMTgxMThEM0FDRTM3RDQ1OTAiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxMUY3MkM1NzM4MEMxMUUxODExOEQzQUNFMzdENDU5MCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxMUY3MkM1ODM4MEMxMUUxODExOEQzQUNFMzdENDU5MCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqIiLqsAAAfmSURBVHja7FtpaBRJ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');
+  -webkit-transition-property: top, bottom, left, right;
+  -webkit-transition-duration: 0.5s;
+  -webkit-transition-opacity: .3s;
+}
+.launcherButton {
+  position:absolute;
+  top:-.7em;
+  right:.5em;
+  width:109px;
+  cursor:pointer;
+  height:46px;
+  display:none;
+  opacity:0;
+  z-index:1000;
+}
+
+#contentdoc {
+    /* background:url(http://afromum.files.wordpress.com/2011/05/quotation-marks.jpg) 0px 0px no-repeat; */
+    margin:0 auto;
+    width:700px;
+    margin-top:100px;
+}
+#comments-ui {
+  font-family:sans-serif;
+  font-size:1.3em;
+  display:none;
+}
+.readsocial-agentstring {
+  font-size:11px;
+  color:#666;
+  text-align:right;
+}
+.readsocial-group-name {
+  color:#e46;
+  display:none;
+}
+.readsocial-username {
+  font-size:11px;
+  color:#369;
+  text-align:right;
+}
+.readsocial-hilight-body {
+  display:none;
+}
+.readsocial-note-body {
+  padding:1em;
+  background-color:#fff;
+  font-size:1.2em;
+  color:#339;
+    display:inline-block;
+}
+.readsocial-profile-img-twitter {
+  display:inline-block;
+  margin-right:1em;
+  vertical-align:middle;
+}
+.readsocial-notepointer {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-right:10px solid white;
+  display:inline-block;
+}
+.li-noteitem {
+  margin-bottom:1em;
+}
+.loginPane a {
+  height: 50px;
+width: 50px;
+background-color: #CCC;
+display: inline-block;
+margin: 0 auto;
+text-align: center;
+padding: 10px 10px;
+vertical-align: top;
+}
+.view {
+  display:none;
+  height:500px;
+  width:100%;
+  background-color:#eee;
+  margin:0;padding:0;
+  padding:2em;
+  border:1px solid #ccc;
+  border-bottom:1px solid #ddd;
+  overflow:auto;
+}
+.view ul {
+  padding:0;margin:0;
+}
+.view ul li {
+  list-style-type:none;
+  margin-left:2em;
+}
+
+.postview,.listview,.authview {
+  display:none;
+}
+.button {
+  padding:.5em;
+  border:1px solid #ccc;
+  background-color:#ddd;
+  border-bottom:none;
+  z-index:100;
+  margin-bottom:-1px;
+  cursor:pointer;
+}
+.button.selected {
+  background-color:#eee;
+}
+h1.hash {
+  font-size:4em;
+  color:#e46;
+}
+h1 a {
+  background-color:#ccc;
+  padding:.1em;
+}
+.ldquo {
+  font-size:40em;
+  color:black;
+  opacity:.3;
+  position:absolute;
+  top:14px;
+  line-height:1em;
+  left:5%;
+  z-index:-1;
+  user-select:none;
+    -moz-user-select: none; 
+        -khtml-user-select: none; 
+        -webkit-user-select: none; 
+        -o-user-select: none; 
+}
+img {
+  border:none;
+}
+::selection {
+  background:#eee;
+}
+.ib {
+  display:inline-block;
+}
+
+

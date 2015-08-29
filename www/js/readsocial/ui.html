@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ReadSocial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="../readsocial/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../readsocial/css/rsui.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script>
+      window.onload = function () {
+        ReadSocial.log('UI:starting WindowProxyDispatcher');
+        Porthole.WindowProxyDispatcher.start();
+      }
+
+
+    </script>
+    <style>
+
+      body {
+        background:none transparent !important;
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+
+    </style>
+    <script type="text/javascript" src="../readsocial/libRSAPI.js"></script>
+    <script type="text/javascript" src="../readsocial/libRSTmpl.js"></script>
+    <script type="text/javascript" src="../readsocial/libRSAuth.js"></script>
+
+
+  </head>
+
+
+  <body style="background:none transparent !important">
+      
+      <div id="logo" onclick="window.location.href='http://www.readsocial.net'"></div>
+
+      <div id="helptext"><div class="center shadow">ReadSocial: Talk About It</div></div>
+        
+
+      <div id="maincontent" class="container-fluid modal hide">
+
+        <div class="modal-header">
+             <div class="readsocial-dialogheader ui-widget-header">
+
+                  <div class="readsocial-topnav nav">
+                      <div class="btn-toolbar">
+                          <div class="readsocial-groupEdit ib" style="display:none"><input type="text" id="readsocial-newgroup" /></div>
+                          <div class="btn-group rs-channelList" style="">
+                            <button class="btn btn-success readsocial-groupNav"><span 
+                              class="readsocial-groupbutton-text"><div class="readsocial-groupbutton-hint ib pull-left">#</div><span class="button-label">ReadSocial</span></span></button>
+                            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                            </ul>
+                          </div>
+                          <div class="btn-group readsocial-authstatus">
+                            <div class="logged-in" style="display:none"></div>
+                            <div class="logged-out" style="display:none"></div>
+                            <div class="authbutton" style="display:none"></div>
+                          </div>
+
+                          <div class="btn-group">
+                          <ul class="nav nav-pills ib authnav-ul">
+                            <li class="dropdown">
+                              <a class="dropdown-toggle login-status"
+                                 data-toggle="dropdown"
+                                 href="#">
+                                  <span class="uname">Not Logged In</span>
+                                  <b class="caret"></b>
+                                </a>
+                              <ul class="dropdown-menu authmenu">
+                                <li><a class="authLink" data-provider="facebook"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAX0lEQVQ4jWP4//8/AyUYTFhHzjgDxP9JxGeQDSBVMxgTbUBCxer/r999+Q8DJBuArJksA9A10s8AXIBoA0B+R/Y/jD+EwoBoA1yT5v3PbdmCE8MAshhID/UMoDgzUYIBj0Cgi7ar4coAAAAASUVORK5CYII="/>Facebook</a></li>
+                                <li><a class="authLink" data-provider="twitter"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAByElEQVQ4jaWTT2sTURTFf8lM/k+ZGcPENpU4bRkXLsy4KBRBST5BAn6AOuJawS9QEFy4soLgQjCzciFKGxCtK6PWjaAmC1GwUEHQIMVMtEripIyLdsIkJgvJ2dx3efecy3n3vpDneUyC8ERsQPQPrY4rq/FIe7ig1XFlu/7ZcjquqiuJbcvM2a2OKwOo8Ug75Fso33tdLR3T1iwzZwcFzNub9cafRJ6wCG6Xgtyrbf/ozq2cMa5Y+SN3+hacqcMz5583K1a1XvE7vG22zUZSzzM9D5kczBrUQtmCkz2ePplVPw1YWDaUh89+pxbtnW/n1m/WSmVDq8pS8hdxbdBTSsZeSl41tdgrgL6F4oP3L2tMnwJgrwc/v+/HdPafh/POqhqwA4EpXC/O35BFdgEQRFAyI8mmImz55AEB81Ds0aWF6P2+yBhc1IW7wTy4B7sF1dvQ415zHNlUhC1rIXVrnADFWWmjsiitlGciL0aRn56WLgADDUTYX5bLT96trn/4WnJCMZVMDqbS/aLlo9HHqycS15RoeHNY2J+CABh1p7e09sUt+pd6MtwsaOKbuZTQAD4Ce+MEfEhAOpB3gdZBHIlhgf/GxL/xLxnPlf5bc5lvAAAAAElFTkSuQmCC"/>Twitter</a></li>
+                                <li><a class="authLink" data-provider="google"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAADCklEQVQ4jSXSy2ucVRjA4d97zvdNJpPJbTJJE9rYaCINShZtRCFIA1bbLryBUlyoLQjqVl12W7UbN4qb1gtuYhFRRBCDBITaesFbbI3RFBLSptEY05l0ZjLfnMvrov/Bs3gAcF71x6VVHTk+o8nDH+hrH89rUK9Z9Yaen57S3wVtGaMBNGC0IegWKIDxTtVaOHVugZVmH3HX3Zz+4l+W1xvkOjuZfPsspY4CNkZELEgEIJKwYlBjEwjec/mfCMVuorVs76R8+P0KYMmP30U2dT8eIZqAR2ipRcWjEYxGSCRhV08e04oYMoxYLi97EI9YCJ0FHBYbIVGDlUBLwRlLIuYW6chEmQt/rJO09RJjhjEJEYvJYGNhkbUhw43OXtIWDFRq9G87nAaSK6sVRm8r8fzRMWbOX2Xx7ypd7ZET03sQhDOz73DqSJOrd+7HSo4QIu0Nx/4rOzx+cRXZ9+z7+uqJ+3hiepxK3fHZT2tMjXYzOtzL6dmznPzhLexgN0QlxAAYxAlqUqRmkf5j59RlNQ6MFHhgcpCTTx8EUb5e+plD7x4jjg1ANCAgrRQAdR7xKXjBlGyLYi7PxaUmb8z8xcpGHVXLHaXdjI0egKyJiQYTEhSPREVIEUBNC+Mqm+xpz3j0njLPHB2nsh1QgeG+IS48dYbD5YNoo0ZUAbVEuTUoKuBSZOarX/WhyQn6eg2+usDWf0s0tq8zNPYk+WI/Lnge++hlvlyfQ3NdECzGRWKwEEA0qNY251n69kV6+Y0kbaCZoebG2X3oU7pKoyxuXOPe945zs9DCeosGIXoBDyaLdf6ce4Hbk+/Y299ksKtAuaeNsiyw8c1LKIZ95b0MdgxA5giixACpTxEPSau6QdFfI5/2cLPmEW+JAQrtJUJzDXF1dkwHzVodJMX4HFEcQQMaFdPeM0Jb/4PUtzzaLKAhRyJFwo6lbegRNFfk819muV5dR4JBQoQdQ2xFiDmSNDHiaptamR9Gq5cQ18AledrGDpOfeI5Lq8u88smbhMRisoSAgAYghdfn5H/JkHuRZ1owLAAAAABJRU5ErkJggg=="/>Google</a></li><!--
+                                <li><a class="authLink" data-provider="tumblr"><img src="data:image/png;base64,R0lGODlhEAAQAOZuAD9cdyA3TT5bdkBdeCA3Tj1adTZSbCI6VEFeeUtphDhVb0VjfiM7UjdTbiE4T0dlgEhmgjxYc0lnglZfajRQazlVcENgezpWcbrAxzxZdDtYcyM6UT5adSQ7UkRhfDNPaUhlgUJgezlWcDdUbsDJ1FBpgSI5UCE5UL3EzlZtgz1ZdOHh5UFfepadpt/i6Ofo7cDI0is8TVljbjtXcj9JVi8/UTZSbbS6w3CHnTdTbThUbkVifTpXckdlgUlmgkdkgEpngzZTbSs6Sr/I0TpXcV9wgkZkf2V6j0JfejRJXjNMYzhPZUBbdDtYckFbc46hsuHm7D1YcWZ/lkRifUZkgCI6UUpogzVJXrvEzkhmgThUb4WZrOHl7EVifqu0v72/xba9xipDYENhfEZjf0lngyg0QkpohDRQajVRax82TUtphd/f4+vu8yg/WP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAG4ALAAAAAAQABAAAAfYgG5tg4SFhYIHZooJao2OjWEdbT4SZJZQbE6KZoxqkg8PPSBbbGxllZZAVgxtCwtjT1ylMjhSIFkQEKxiHh6lv2wwTEZUPxttCCxIQy6lGBgtNVM7XccAAANRKKVlSVdLIRYWVW0FBRwCJGwvZdgDAwgIJm1NGhERWCtrZecC/gAn2lQQceECmDVrJmg4UiJDBhUO2jQYoUOLF4QYixDhMSOigY82UtzA+IWGAgUVCLQ5QwGNSyUxJpQpIyRIjgYqD3z4cKZnz5Yu0Rwg4CaN0aNIAygN4CYQADs="/>Tumblr</a></li>-->
+                              
+                              </ul>
+                            </li>
+                          </ul>
+                          </div>
+                         
+                          <div class="btn-group listnav">
+                            <button class="btn readsocial-backNav"><i class="icon-list"></i></button>
+                            <button class="btn readsocial-makeCommentNav"><i class="icon-comment"></i></button>
+                          </div>
+                      </div>
+                  </div>
+
+
+
+                  <div style="display:none">
+                        <div class="img-wrap">
+<img style="inline-block" width="93" height="15" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF0AAAAPCAYAAACGN8M/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTdBNDJFQTkwQkQ3MTFFMTk3NjBGMUIyMzE1QjEwNEIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTdBNDJFQUEwQkQ3MTFFMTk3NjBGMUIyMzE1QjEwNEIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFN0E0MkVBNzBCRDcxMUUxOTc2MEYxQjIzMTVCMTA0QiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFN0E0MkVBODBCRDcxMUUxOTc2MEYxQjIzMTVCMTA0QiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PhsegrcAAANJSURBVHja7FgxixNBFN6EQ7C6xUqwcALCwRG4tVSUy1l5VXJibeIvMOm0MnZWniIIFpJYKNh4l0obzYqFZVZyCIKQtRDsLlcJgqxv5Bv5bpjNZS+JHJgHL7ObN+/Nm2/evDezuSRJPBft7OwsS3PBIXpbLBa/eHMyOF2S5oxD9EJw2nPpLKQYCqR5I3zCEj0XfjKHeh99En4kvGT9XxMc113A5zMCfk2M/PqHE/KFK8JqRvZLGfo5+woe3yH7bInOCb8SPBdHgn7EANek/dmaEeh14S7ag0j3W00TZgU+f4QBnzWFxBNTFuAXJgS8hjZGJHwU3qYoLeO5IxyRnk4ZK3h+Cn1DCvJFx3hGbw/jxKRTxTP7MEqvDMCHjnG/CrcPA7xgWYLdJQfwf3J8rt/vTxLhXYBrgH8AZ28LNwnoAO93MLkeZAq8Bkf1pFvQiaDnQ75q2dT9G1j4FsYfQkf7cB22u2hDtLrPWfgQ0NgtvA8RsSFkmhLyf5wTzUkH8Jo+CK/rSL/pAPynBi5DSilQxBiA2cktvJuoLgAAH5Ot0sQNKGbyXavobVCEa/1NsunRgndgV8FeRBHtYcG6NIcG+R/ChrJ2YZaIvyePjx2pZiOPiHhtCY/pgUWxMMYYEQHuUUppIkISRLCZcIAo61EUKoDqI0qHjnEa+H9AURmQjqF3aFcwbmiltjQQ9WLtwqemtUBZz+5XpXnoEN2SBWnn5eeHvFxxAH9K+P2YwLuoie3JHCHqfURmzlHI/BGLW0CQVACO79Dxx7Rn1yZ9irkPn9YmuCxpwJ8hcG3A7/49vUwZ+A4VrxigBrQjFOVfRTXBFLUapRJlFViFqG4DzCFsVShd3aACvQ37dbJRc/h8moow79apA77vyDhF4CMqYgOkl00Ct4nnXchN8VPI16ZAJ1RUPYDZw/91Ou4ZnQFsBhg/Rhti/AR9qg6fTa1poV8NfpUpJdVG7ZpxAdeUs7+9iPJxaV4KX7aUvwlfFAMD6/LiWTmTt3WQkvcVRXxMpwX7phijX0SL45Oe63YZOWpCQDsjsvzj/iXadcrywU+ZZybAnaAfAvj//YNXJsBTP3jpVCPGdKpZnsN6IOkb6Hn7yC0Y9tMUfgswAJLmWDH1LuGJAAAAAElFTkSuQmCC" />
+                      </div>
+                  </div>
+
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="readsocial-modal">
+              <div class="readsocial-uipane">
+
+                    <div id="readsocial-viewbox" class="collapse">
+                      <div id="selected-context-text" class="rs-selected-wrap well">
+                     
+                      </div>
+                      <div class="readsocial-loadingView rsview viewlevel0 well">
+                      </div>
+                      <div class="readsocial-noteListView rsview viewlevel0 well">
+                        <div class="readsocial-posts">
+                          <ul>
+                          </ul>
+                          <div class="readsocial-bigzero">
+
+                          </div>
+                          <div class="readsocial-loadmore"><button class="btn btn-large"><i class="icon-chevron-down"></i>Load Older Posts...</button></div>
+                          <div class="readsocial-loadmore-throbber">
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="readsocial-noteDetailView rsview viewlevel1 well">
+                      </div>
+                      <div class="readsocial-noteCreateView rsview viewlevel1 well">
+                        <div class="readsocial-publisher well">
+                          <div class="readsocial-formholder">
+                            <div class="readsocial-postcontrols nav">
+
+                              <div class="readsocial-postidentity">
+                                <div class="readsocial-screen-name"></div>
+                              </div>
+
+                              <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+                                <ul id="post-type-selection" class="nav nav-tabs">
+                                  <li data-posttype="1" class="active"><a href="#publish-tab1" data-toggle="tab"><i class="icon-pencil"></i>&nbsp;Note</a></li>
+                                  <li data-posttype="2"><a href="#publish-tab2" data-toggle="tab"><i class="icon-globe"></i>&nbsp;Link</a></li>
+                                  <li data-posttype="3"><a href="#publish-tab3" data-toggle="tab"><i class="icon-picture"></i>&nbsp;Picture</a></li>
+                            
+                                </ul>
+                                <div class="tab-content">
+                                  <div class="tab-pane active" id="publish-tab1">
+                                    <div class="readsocial-textentryarea postfield">
+                                        <textarea placeholder="[leave your mark here]" class="readsocial-magnifier readsocial-note" name="note" rows="3" cols="70"></textarea>
+                                    </div>
+                                  </div>
+                                  <div class="tab-pane" id="publish-tab2">
+                                    <div class="readsocial-linkentryarea postfield">
+                                        <label for="link">URL</label><input type="text" placeholder="[attach a link]" name="link" /><br/>
+                                        <label for="link_note">Text</label><input type="text" placeholder="[title of link]" name="link_note" />
+                                    </div>
+                                  </div>
+                                  <div class="tab-pane" id="publish-tab3">
+                                    <div class="readsocial-fileentryarea postfield">
+                                      <div class="readsocial-filedropzone">Drag and drop a file here.</div>
+                                      <input id="img_file" type="file" name="img_file" />
+                                      <input type="text" placeholder="[image caption]" name="img_note" />
+                                    </div>
+                                  </div>
+                                 
+                                 <div class="pull-right">
+
+                                  <button class="btn btn-primary readsocial-attachButton readsocial-button">Attach</button>
+                              
+                                  <button class="btn readsocial-cancelPostButton readsocial-button">Cancel</button>
+                            
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+                            </div>
+
+
+                          </div><!--endformholder-->
+                        </div>
+                      </div>
+                      <div class="readsocial-responseCreateView rsview viewlevel2 well">
+                      </div>
+                      <div class="readsocial-responseAuthSubview rssubview"></div>
+                    </div>
+
+              </div><!-- uipane -->
+            </div><!-- modal -->
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn closeButton" data-dismiss="modal">Close</a>
+        </div>
+
+
+      </div> <!-- /maincontent -->
+
+        <div id="helptext2"><div class="center shadow">Comments Are Public</div></div>
+        
+
+   <!-- go -->
+      <script src="../readsocial/lib/bootstrap/js/bootstrap.min.js"></script>
+
+
+
+      
+  </body>
+
+
+</html>

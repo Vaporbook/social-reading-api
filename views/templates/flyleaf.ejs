@@ -1,0 +1,65 @@
+
+<div class="jumbotron subhead">
+<h1 class=""><%= doc.gid %></h1>
+</div>
+
+<div class="row pagination-center">
+	<div class="span12 pagination-left">
+		<div id="contentdoc">
+		<%- doc.body %>
+		</div>
+	</div>
+</div>
+
+<div style="display:none">
+  Content Signature: <%= doc.md5 %>
+</div>
+
+<script type="text/javascript" src="/js/readsocial.js"></script>
+
+<script type="text/javascript">
+
+
+		readsocial({
+			base: 'https://api.readsocial.net',
+			api_base: 'https://api.readsocial.net',
+			partner_id: 8,
+			group_id:'<%= doc.gid %>',
+			container: '#contentdoc',
+			load_handler: function () {
+				
+				console.log('loaded!');
+
+			},
+			use_ui: true,
+			session: <%- JSON.stringify(session) %>,
+			create_note_url: '/sso/note/create',
+			create_response_url: '/sso/response/create',
+			login_function: function () {
+				alert('log in...');
+			},
+			use_ui: true
+		});
+
+
+</script>
+
+<div id="linkshare" class="modal hide">
+
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h2>Share This Flyleaf</h2>
+  </div>
+  <div class="modal-body">
+	<div class="well">
+	<textarea class="linkbox" style="width:100%"><%= sharelink %></textarea>
+	</div>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+
+</div>
+
+
+

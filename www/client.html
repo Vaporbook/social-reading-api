@@ -1,0 +1,160 @@
+<html>
+<head>
+
+	<link type="text/css" rel="Stylesheet" href="css/main.css" />
+	<title>ReadSocial Annotation API Test Console</title>
+
+</head>
+
+<body>
+
+<h3>ReadSocial Sandbox Test Console</h3>
+
+<h5>Copyright (c) ReadSocial, Inc.</h5>
+
+<h2>Make a selection</h2>
+
+<div id="contentdoc">
+	<blockquote>
+	
+	<p>
+	When the user is building a trail, he names it, inserts the name in
+	his code book, and taps it out on his keyboard.  Before him are the
+	two items to be joined, projected onto adjacent viewing positions.  At
+	the bottom of each there are a number of blank code spaces, and a
+	pointer is set to indicate one of these on each item.  The user taps a
+	single key, and the items are permanently joined.  In each code space
+	appears the code word.  Out of view, but also in the code space, is
+	inserted a set of dots for photocell viewing; and on each item these
+	dots by their positions designate the index number of the other item.
+	</p>
+	<p>
+	Thereafter, at any time, when one of these items is in view, the other
+	can be instantly recalled merely by tapping a button below the
+	corresponding code space.  Moreover, when numerous items have been
+	thus joined together to form a trail, they can be reviewed in turn,
+	rapidly or slowly, by deflecting a lever like that used for turning
+	the pages of a book.  It is exactly as though the physical items had
+	been gathered together to form a new book.  It is more than this, for
+	any item can be joined into numerous trails.
+	</p>
+	<p>
+	The owner of the memex, let us say, is interested in the origin and
+	properties of the bow and arrow.  Specifically he is studying why the
+	short Turkish bow was apparently superior to the English long bow in
+	the skirmishes of the Crusades.  He has dozens of possibly pertinent
+	books and articles in his memex.  First he runs through an
+	encyclopedia, finds an interesting but sketchy article, leaves it
+	projected.  Next, in a history, he finds another pertinent item, and
+	ties the two together.  Thus he goes, building a trail of many items.
+	Occasionally he inserts a comment of his own, either linking it into
+	the main trail or joining it by a side trail to a particular item.
+	When it becomes evident that the elastic properties of available
+	materials had a great deal to do with the bow, he branches off on a
+	side trail which takes him through textbooks on elasticity and tables
+	of physical constants.  He inserts a page of longhand analysis of his
+	own.  Thus he builds a trail of his interest through the maze of
+	materials available to him.
+	</p>
+	<p>
+	And his trails do not fade.  Several years later, his talk with a
+	friend turns to the queer ways in which a people resist innovations,
+	even of vital interest.  He has an example, in the fact that the
+	outranged Europeans still failed to adopt the Turkish bow.  In fact he
+	has a trail on it.  A touch brings up the code book.  Tapping a few
+	keys projects the head of the trail.  A lever runs through it at will,
+	stopping at interesting items, going off on side excursions.  It is an
+	interesting trail, pertinent to the discussion.  So he sets a
+	reproducer in action, photographs the whole trail out, and passes it
+	to his friend for insertion in his own memex, there to be linked into
+	the more general trail.
+	</p>
+	
+	<p style="text-align:right">&mdash;Vannevar Bush</p>
+	
+	</blockquote>
+	
+</div>
+
+<script type="text/javascript" src="js/readsocial.js"></script>
+
+<script type="text/javascript">
+
+
+	// loads and initializes the API with the specified channel and content
+	// the channel may be changed via API calls, but an initial channel
+	// is required. It can be any string of alphanumeric characters.
+	
+	// the content id is a string identifying an element
+	// which identifies the area of the page to activate with the
+	// ReadSocial API. The page area should contain a collection of
+	// paragraph elements, each containing selectable text
+	
+	// Step 1: call the load() method, and pass in your host uri, partner id, a channel, content id, and callback
+	
+	// hostURI is the readsocial API server your network is hosted on
+	
+	// (Content id refers to the content you want to make active for API calls)
+	
+	var search = parseQueryString(window.location.search);
+
+	readsocial({
+		
+		host_uri: (typeof search.dev != 'undefined') ? 
+	    window.location.protocol+'//localhost:8124/' :
+	       window.location.protocol+'//'+window.location.host+'/',
+	
+		partner_id: (typeof search.rid != 'undefined') ? parseInt(search.rid) :  (typeof search.dev != 'undefined') ? 2 : 8,
+		
+		group_id:'partner-testing-channel',
+		
+		container: 'contentdoc',
+		load_handler: function () {
+			
+			console.log('loaded!');
+
+		},
+		
+		use_ui: true
+		
+	});
+	
+	
+	
+		/**
+		 * Parses a querystring into a object consisting of the name=value pairs
+		 *
+		 * Splits the querystring up and returns an object with properties that
+		 * correspond to the names of the variables in the querystring.
+		 *
+		 * @author  Dan Delaney     http://fluidmind.org/
+		 * @param   queryString     Obviously, the query string to parse
+		 */
+		function parseQueryString(queryString) {
+		    if(queryString == 'undefined' || queryString == '') {
+		        return false;
+		    } else {
+		        // Get rid of a leading '?' so that you can pass 'location.search' to this function
+		        if(queryString.substr(0, 1) == '?') { queryString = queryString.substr(1); }
+
+		        // Split up the querystring
+		        var components = queryString.split('&');
+
+		        // Assign each variable of the querystring to a new property of the final object
+		        var finalObject = new Object();
+		        var parts;
+		        for (var i = 0; i < components.length; i++) {
+		            parts = components[i].split('=');
+		            finalObject[parts[0]] = decodeURI(parts[1]);
+		        }
+
+		        return finalObject;
+		    }
+		}
+	
+	
+</script>
+
+
+</body>
+</html>

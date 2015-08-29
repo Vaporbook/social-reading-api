@@ -1,0 +1,1 @@
+ReadSocial.Auth.setSession({"authed":true, "net_id":"8", "user": {"uid":"1001", "uimg":"https://graph.facebook.com/aaronstevenmiller/picture", "udom":"mysite.local", "uname":"Aaron Miller", "ulink":"http://www.facebook.com/aaronstevenmiller"} } );

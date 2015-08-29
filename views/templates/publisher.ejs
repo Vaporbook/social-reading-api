@@ -1,0 +1,255 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<title>ReadSocial</title>
+<style>
+body {
+	margin: 0 auto;
+  padding-bottom:10em;
+}
+#contentdoc {
+    /* background:url(http://afromum.files.wordpress.com/2011/05/quotation-marks.jpg) 0px 0px no-repeat; */
+    margin:0 auto;
+    width:700px;
+    margin-top:100px;
+}
+#comments-ui {
+  font-family:sans-serif;
+  font-size:1.3em;
+
+}
+.readsocial-agentstring {
+  font-size:11px;
+  color:#666;
+  text-align:right;
+}
+.readsocial-group-name {
+  color:#e46;
+  display:none;
+}
+.readsocial-username {
+  font-size:11px;
+  color:#369;
+  text-align:right;
+}
+.readsocial-hilight-body {
+  display:none;
+}
+.readsocial-note-body {
+  padding:1em;
+  background-color:#fff;
+  font-size:1.2em;
+  color:#339;
+    display:inline-block;
+}
+.readsocial-profile-img-twitter {
+  display:inline-block;
+  margin-right:1em;
+  vertical-align:middle;
+}
+.readsocial-notepointer {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-right:10px solid white;
+  display:inline-block;
+}
+.li-noteitem {
+  margin-bottom:1em;
+}
+.loginPane a {
+  height: 50px;
+width: 50px;
+background-color: #CCC;
+display: inline-block;
+margin: 0 auto;
+text-align: center;
+padding: 10px 10px;
+vertical-align: top;
+}
+.view {
+  display:none;
+  height:500px;
+  width:100%;
+  background-color:#eee;
+  margin:0;padding:0;
+  padding:2em;
+  border:1px solid #ccc;
+  border-bottom:1px solid #ddd;
+  overflow:auto;
+}
+.view ul {
+  padding:0;margin:0;
+}
+.view ul li {
+  list-style-type:none;
+  margin-left:2em;
+}
+
+.button {
+  padding:.5em;
+  border:1px solid #ccc;
+  background-color:#ddd;
+  border-bottom:none;
+  z-index:100;
+  margin-bottom:-1px;
+  cursor:pointer;
+}
+.button.selected {
+  background-color:#eee;
+}
+h1.hash {
+  font-size:4em;
+  color:#e46;
+}
+h1 a {
+  background-color:#ccc;
+  padding:.1em;
+}
+.ldquo {
+  font-size:40em;
+  color:black;
+  opacity:.3;
+  position:absolute;
+  top:14px;
+  line-height:1em;
+  left:5%;
+}
+img {
+  border:none;
+}
+#contentdoc p {
+  font-size:2.1em;
+  margin:0 auto;
+  margin-left:30px;
+  padding-bottom:10em;
+  background-color:white;
+  padding:1em;
+}
+.ib {
+  display:inline-block;
+}
+
+
+
+</style>
+<link type="text/css" rel="stylesheet" href="/css/thumbprints.css" />
+</head>
+
+<body>
+	
+<div id="contentdoc">
+  
+
+  <h1 class="hash">#<%= group_id %></h1>
+
+  <div class="ldquo">&ldquo;</div>
+ 
+
+  <p class="context"><%
+
+    if(par_body != '') {
+      %><%= par_body %><%    
+    } else {
+      %><%= x.par_body %><%
+    }
+
+
+
+  %></p>
+  
+
+
+ <h1><a href="javascript:void(0)" class="loginlink">Log in</a> to leave your comments on this paragraph...<br/>
+ <a href="<%= x.doc_url %>">Or go back to the book</a>
+ </h1>
+ 
+ <div id="comments-ui">
+<div class="wrap">
+          <div class="channelbar">
+            <div class="groupname"></div><div class="authstatus"></div>
+          </div>
+          <div class="views">
+            <div class="listbutton ib button">LIST</div>
+            <div class="postbutton ib button">POST</div>
+            <div class="authbutton ib button">AUTH</div>
+            <div class="listview readsocial-posts view"><ul></ul></div>
+            <div class="postview view">
+              <div class="avatar"></div>
+              <div class="readsocial-textentryarea postfield">
+                <textarea preview="[leave your mark here]" class="readsocial-magnifier readsocial-note" name="note" rows="3" cols="70"></textarea>
+              </div>
+              <div class="readsocial-buttonContainer">
+                <button class="readsocial-attachButton readsocial-button">ATTACH</button>
+              </div>
+            </div>
+            <div class="authview readsocial-auth view">
+                <div class="loginPane"><a class="readsocial-twitter-auth" href="javascript:void(0)" onclick="popWindow('/v1/<%=net_id%>/auth/login/twitter');return false"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAK8AAACvABQqw0mAAAAAd0SU1FB9oFBRYXCn2yWOEAAAJtSURBVDjLpZXPThNBHMc/v5n9X5poWgIeQAIXH4ATD8DdN8CbPIDxCjdMvHok+ga8SC9eTDy0IsSI1KIGWrad2R0PhZV224LpJJPd/WV+n/nOb74zKwCNRmMH2AOeMl/7Cuxtbm5+kEajsVOr1d4vLi5SqVTmona7XdrtNp1O54UC9uv1OkmS4JybqydJQr1eB9j3gNU4jsnzvJjZOUfP5mROyAFFTiAQehoRmak6jmOAVQ+YDBVdxHIUqYNsYIgeAAfwALIsKwLGGKzyEIGXTY9WKjyv5ewuZwxMhstztNYoHGrGBCXFxhgkjgBopcPE5s1TghAL2NvBmSVwOVrJ/WBrLXps0FUGH7ujycsBLPkefWsIrEUpNRvsnCvN3kqFV8feSKyi4eiZAe0x6PUIgmA2+O77TM/ebIuIYKzF87z/B1c0bET/VrKgHNuPh9+D6x4uz0t5DwJvRI63a7YUt8Zw2WmzUElKeeoWdrePt2YqhTNGVPk+YZwwzpiq2JoBnh+w5Dt+GKGbwW7TGynN9qOht8OFKvbqz/2KnXOkvR4Au0/yqRt31Bnayw8jrLUlxSWwiHDZOceaAVvVnL3VjCW/bMH1m80cpNcTwaVSiAhaKb4ft1heW2erGrBVnW7BtNvFOTe5FFmWFd05h+/7aIGTz5/4/bPNoN8vAa97XS7Oz/h1/p1xxkTFt6rDMATg4uwbZydfivoXq9KaMAyJ4xgRmejjU2vtyvhZFxGCIEBrTRRFpaOulEJrjda6uOjviDz1gIN+v//O9/3SRQIUydPaONQYA3DgAYfGGDHGvBaRlXn+ec65U+ANcPgX5+m56vUt4FsAAAAASUVORK5CYII="></a>              <a class="readsocial-facebook-auth"  href="javascript:void(0)" onclick="popWindow('/v1/<%=net_id%>/auth/login/facebook');return false"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBggGBQkIBwgKCQkKDRYODQwMDRoTFBAWHxwhIB8c Hh4jJzIqIyUvJR4eKzssLzM1RDg4ISpJQTwqQTI3ODUBCQoKDQsMDQ4OGSkkHyQ1NSwpNTU1NTU1 LjU1KTU1NSw1NTU1NSk1KTU1NTUpNTU1NTU1NTUpNTU1NTU1NTU1Nf/AABEIABIAEgMBIgACEQED EQH/xAAZAAACAwEAAAAAAAAAAAAAAAAAAQIEBQb/xAAqEAACAQQBAwALAQAAAAAAAAABAgMABAYR BRMUIRU0QVFUYXOSobHhEv/EABUBAQEAAAAAAAAAAAAAAAAAAAUA/8QAHREAAgAHAQAAAAAAAAAA AAAAAAIBAxESITGRcf/aAAwDAQACEQMRAD8As5jmPMcVk89pY3EUUEUcWgbaJvLRKxJLKTvZPtqU uQc1a4hbczc87As12z9rZ+jYm6oRwrEuF0uvJ1+fdlZ7ZmXMrt+tDFuODQkfRI6Kf2tTKMlvuWwf i7Z+Xtbie463fRKyFn/zIDH4A2DoeNa386YVFskUWGd88B2dr59WjjXTvLt2S8mVGKqsjAAHQA3R SvfX5/qN+6VDjBJ7u4R2VJ5VUHQAcgAUu9ufiJvvNFFRFpEV0VnUMzDZJGyTRRRUR//Z"></a>              <a class="readsocial-google-auth" href="/v1/<%=net_id%>/auth/login/google"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ bWFnZVJlYWR5ccllPAAADUBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdp bj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6 eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDQuMi4yLWMwNjMgNTMu MzUyNjI0LCAyMDA4LzA3LzMwLTE4OjA1OjQxICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRm PSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRl c2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9l bGVtZW50cy8xLjEvIgogICAgeG1sbnM6eG1wUmlnaHRzPSJodHRwOi8vbnMuYWRvYmUuY29tL3hh cC8xLjAvcmlnaHRzLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9w aG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOklwdGM0eG1wQ29yZT0iaHR0cDovL2lwdGMub3JnL3N0 ZC9JcHRjNHhtcENvcmUvMS4wL3htbG5zLyIKICAgeG1wUmlnaHRzOk1hcmtlZD0iRmFsc2UiCiAg IHhtcFJpZ2h0czpXZWJTdGF0ZW1lbnQ9IiIKICAgcGhvdG9zaG9wOkF1dGhvcnNQb3NpdGlvbj0i Ij4KICAgPGRjOnJpZ2h0cz4KICAgIDxyZGY6QWx0PgogICAgIDxyZGY6bGkgeG1sOmxhbmc9Ingt ZGVmYXVsdCIvPgogICAgPC9yZGY6QWx0PgogICA8L2RjOnJpZ2h0cz4KICAgPGRjOmNyZWF0b3I+ CiAgICA8cmRmOlNlcT4KICAgICA8cmRmOmxpLz4KICAgIDwvcmRmOlNlcT4KICAgPC9kYzpjcmVh dG9yPgogICA8ZGM6dGl0bGU+CiAgICA8cmRmOkFsdD4KICAgICA8cmRmOmxpIHhtbDpsYW5nPSJ4 LWRlZmF1bHQiLz4KICAgIDwvcmRmOkFsdD4KICAgPC9kYzp0aXRsZT4KICAgPHhtcFJpZ2h0czpV c2FnZVRlcm1zPgogICAgPHJkZjpBbHQ+CiAgICAgPHJkZjpsaSB4bWw6bGFuZz0ieC1kZWZhdWx0 Ii8+CiAgICA8L3JkZjpBbHQ+CiAgIDwveG1wUmlnaHRzOlVzYWdlVGVybXM+CiAgIDxJcHRjNHht cENvcmU6Q3JlYXRvckNvbnRhY3RJbmZvCiAgICBJcHRjNHhtcENvcmU6Q2lBZHJFeHRhZHI9IiIK ICAgIElwdGM0eG1wQ29yZTpDaUFkckNpdHk9IiIKICAgIElwdGM0eG1wQ29yZTpDaUFkclJlZ2lv bj0iIgogICAgSXB0YzR4bXBDb3JlOkNpQWRyUGNvZGU9IiIKICAgIElwdGM0eG1wQ29yZTpDaUFk ckN0cnk9IiIKICAgIElwdGM0eG1wQ29yZTpDaVRlbFdvcms9IiIKICAgIElwdGM0eG1wQ29yZTpD aUVtYWlsV29yaz0iIgogICAgSXB0YzR4bXBDb3JlOkNpVXJsV29yaz0iIi8+CiAgPC9yZGY6RGVz Y3JpcHRpb24+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tldCBlbmQ9InciPz6E0RvlAAAD dUlEQVR42qyU709bVRzGP7f3lkJbSgNNJwKDAUU3bbYsODNe+AJ0msjii5lpTGY00fjGaKZGF31L NBH1vYnzxVyIizNTR4jxx5yZ89e2sBWByJgdOCaDQVtK2/v7eu4tafkDdpLnvDj3nOc8z/P93iM5 jsOdGJJL9NS7n7f3dsW+SrRsaf95Xke3JR5LhGmOhVg8eRKmJoh2teJTFNz97tW51TV+m14anVeV F46dOaorLtuD3bHvXxrsS5wYzxCMQUTxcWWlxKO9d7Pr1Rf5+50jxNRlIvf3UHYgIe24i55G6dAn P91wKZ71iPbt7u4OBYOc/ecac0WZgCKRyRUYSDSwN9GEFWwkMzaCv7AEfj/YDpIkEWtoYGeDud/l 8LlTqC7o+fRbJsX1Eo5qoKom4/MZbz2wtQ3LkrDy+TLW85j5Ncwb/6JomrfHU1R2DXvaQpy4PEtb LMrc0iq5UthbX/3xHKGcgX49gyOUeAqEBEVEYBfqnQrRqYuLvN6yhecf6uSbS3OMpWZpiQbYn2zj 4x+O8V39JPc+GcfvK5OIoAjkbUJ5k+WAr6roeOo2Rs1VDj3QzOnX+rl0bZnWphCnZkZ5b/Iojz8T IRAR0dgbPAIlMeUsUdCpaJWoRpHFoXU+u3iBbWGH0cP9YtVm5MszNNabJOp8GJonZFPjQFiICWyw e7pKBRVLs5jPaYxN3CSVXvE+DT/yCoFSB+fnzHLYor9MawOmCxnDkKpEmVyO+5okPhrczi9vPCzy qcEyTPZ2Jvni4IdIxSSTCyaaKglQgaHJ6DpVa8MHkjzdtxX1ygjazK/ol5dZtGuJ9L1Fe+cehva9 yeHTLxOvK4jAfV5GbqUd2Ye+WdHubVHyf36A8d9xgnGVxp448Q4Z7cIRCunzbG/poKtxBytruugv qQJd86EZVImKa1nRWOPUt4bw12rIUgZ/0CTWamDOjXghF0qal4cqQvcgrOm6q2iTNVOuk+zgTkoz w9Q2BJB8ilc1NVsgcs8Bfk/PMn1ziu64n6JWrpItrNWJ44ZqyxWiP/66Wtz1xNtBVWkmv/AtspVF 9tdT0znAdHiAoa/fJxayxeZa9zfzRlAJkMsqZFdJV4jOptLPiffk097kYMjp7KdYzLGQvU0qNc+5 iSGcmrzopyi3stU2Mgyb67eYVfXwwcp7dCfG/wIMAHtxjIJQBICYAAAAAElFTkSuQmCC"></a></div>
+            </div>
+
+          </div>
+        </div>
+ </div>
+ 
+<pre style="display:none"><% for(prop in x) {
+  
+  
+  %>
+  <%= prop %>:<%= x[prop] %>
+  <%
+          } %></pre>
+
+<script type="text/javascript" src="/js/readsocial/lib/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/js/readsocial/lib/underscore.js"></script>
+<script type="text/javascript" src="/js/readsocial/libRSHASH.js"></script>
+<script type="text/javascript" src="/js/readsocial/libRSTmpl.js"></script>
+<script type="text/javascript" src="/js/thumbprint.js"></script>
+
+<script type="text/javascript">
+
+    function popWindow(url)
+    {
+
+      var authwindow = window.open(url,'ReadSocial Authorization', 'height=500,width=400,resizable=no,scrollbars=no,toolbar=no,location=no,directories=no,status=no,menubar=no');
+      if(typeof authwindow=='undefined') throw "Pop up windows must be enabled.";
+      authwindow.focus();
+      
+    }
+    function callback(stat) {
+
+      console.log('auth callback on main page');
+      console.log(stat);
+      $('p.context').trigger('readsocial_auth',[stat]);
+
+
+    }
+
+    $(document).ready(function () {
+
+
+      $('p.context').thumbprint({
+
+        base: 'http://dev.readsocial.net',
+        api_base: 'http://dev.readsocial.net',
+        partner_id:<%= net_id %>,
+        group_id:'<%= group_id %>',
+        ui: '#comments-ui',
+        load_handler: function () {
+
+        }
+        
+      });
+
+
+    });
+
+
+</script>
+
+
+</div>
+
+
+</body>
+</html>

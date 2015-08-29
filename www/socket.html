@@ -1,0 +1,38 @@
+<html>
+
+  <head>
+    <script src="/js/readsocial/lib/jquery-1.7.1.min.js"></script>
+    <script src="http://localhost:8088/socket.io/socket.io.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        socket = io.connect("http://localhost:8088");
+        socket.on('message', function(data) {
+          console.log(data);
+          showMessage(data);
+        });
+      });
+      
+      
+      function showMessage(data) {
+        
+        var div = $("<div></div>");
+        
+        div.text(data);
+        
+        $("#messages").prepend(div);
+        
+      }
+      
+    </script>
+  </head>
+
+  <body>
+
+    <h1>Messages</h1>
+
+    <div id="messages"></div>
+    
+  </body>
+
+</html>
