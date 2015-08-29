@@ -197,7 +197,7 @@ var host = envblock.db.host,
     serverPort = envblock.port,
     nodeUserGid = envblock.gid,
     nodeUserUid = envblock.uid,
-    dburi = 'mongodb://'+host+':'+port+'/'+dbname,
+    dburi = process.env.MONGOLAB_URI || 'mongodb://'+host+':'+port+'/'+dbname,
     sessionStore = new model.MongoSession({
       url: dburi
     }),
