@@ -3,6 +3,9 @@
 
 # thumbprints
 
+Thumbprints is a social reading API. It enables x-domain, paragraph-level annotation of text in a web browser, mobile app, or ebook reading system. Authentication is managed via oauth on a per-network basis.
+
+# set up
 
 To set up a dev environment:
 
